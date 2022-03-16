@@ -1,0 +1,22 @@
+{
+    "schema": "https://github.com/amotrix/schema/202203/amo/meta-schema.json",
+    "title": {
+        "zh": "猫头鹰说你好",
+        "en": "Owl say hello"
+    },
+    "description": {
+        "zh": "通过猫头鹰递信机器人向自己发送一条文本消息",
+        "en": "Use OwlDeliver to send a text message to myself"
+    },
+    "author": {
+        "name": "github.com/amotrix",
+        "contact": "https://github.com/amotrix"
+    },
+    "config": {
+        "format": "yaml",
+        "version": "0.1.0"
+    },
+    "script": {
+        "version": "0.1.0"
+    }
+}

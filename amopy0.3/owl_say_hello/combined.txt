@@ -1,0 +1,69 @@
+>---<
+
+Here are combined.txt file comments
+The first line must be the separator string: ">---<"
+Content blocks order: comments, meta.json, config.json/yaml/toml, script.py
+
+>---<
+
+{
+    "schema": "https://github.com/amotrix/schema/202203/amo/meta-schema.json",
+    "title": {
+        "zh": "猫头鹰说你好",
+        "en": "Owl say hello"
+    },
+    "description": {
+        "zh": "通过猫头鹰递信机器人向自己发送一条文本消息",
+        "en": "Use OwlDeliver to send a text message to myself"
+    },
+    "author": {
+        "name": "github.com/amotrix",
+        "contact": "https://github.com/amotrix"
+    },
+    "config": {
+        "format": "toml",
+        "version": "0.1.0"
+    },
+    "script": {
+        "version": "0.1.0"
+    }
+}
+
+>---<
+
+[resources] # Required
+runtime = "amopy0.3" # Required
+timeout = 10         # Required, Options: 10, 30, 60
+memory = 128         # Required
+
+[profile] # Optional. Amo default profile
+title = "猫头鹰说你好"
+description = "通过猫头鹰递信向自己发送一条文本消息。需先添加猫头鹰递信机器人(7000102034)为好友"
+
+[arguments] # Optional, depends on script logic
+# argument name: customized
+# argument properties: label, type, value, hint, required, options
+#   required properties: label, type, value
+#   argument type: string, number, boolean, selection, mixin_assets
+#   options format: [ ["label",value"], ... ]
+
+[arguments.what]
+label = "说什么"
+type = "string"
+value = "你好👋"
+hint = ""
+required = true
+
+
+>---<
+
+from ..._fake_builtin import *  # Use in development, will be ignored in production
+
+
+def main():
+    owl = extensions.owl
+    msg = owl.mixin_messenger.pack_message("text", thisamo.args["what"])
+    owl.mixin_messenger.send_me_messages([msg])
+
+
+main()

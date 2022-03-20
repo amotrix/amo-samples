@@ -4,8 +4,8 @@ timeout = 10         # Required, Options: 10, 30, 60
 memory = 128         # Required
 
 [profile] # Optional. Amo default profile
-title = "猫头鹰说你好"
-description = "通过猫头鹰递信向自己发送一条文本消息。需先添加猫头鹰递信机器人(7000102034)为好友"
+title = "阿莫说你好"
+description = "向自己发送一条 Mixin Messenger 消息"
 
 [arguments] # Optional, depends on script logic
 # argument name: customized

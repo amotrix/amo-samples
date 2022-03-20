@@ -1,0 +1,24 @@
+{
+    "schema": "https://github.com/amotrix/schema/d202203/amo/meta-schema.json",
+    "config-file": {
+        "version": "0.1.0",
+        "format": "toml"
+    },
+    "script-file": {
+        "version": "0.1.0"
+    },
+    "author": {
+        "name": "github.com/amotrix",
+        "contact": "https://github.com/amotrix"
+    },
+    "sample": {
+        "title": {
+            "zh": "阿莫说你好",
+            "en": "Amo say hello"
+        },
+        "description": {
+            "zh": "通过 Mixin Messenger 向自己发送一条文本消息",
+            "en": "Send me a text message through Mixin Messenger"
+        }
+    }
+}

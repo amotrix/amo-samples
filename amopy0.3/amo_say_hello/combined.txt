@@ -1,0 +1,75 @@
+>---<
+:plain:
+    Here are the comment block of this file.
+
+    Every content blocks start with separator line: ">---<",
+    Second line is the format of the content, values are: ":plain:", ":json:", ":toml:", ":yaml:", ":python:".
+    After that are the content of the amo's file.
+
+    Order of the content blocks must be: comment, meta, config, script.
+    
+
+>---<
+:json:
+{
+    "schema": "https://github.com/amotrix/schema/d202203/amo/meta-schema.json",
+    "config-file": {
+        "version": "0.1.0",
+        "format": "toml"
+    },
+    "script-file": {
+        "version": "0.1.0"
+    },
+    "author": {
+        "name": "github.com/amotrix",
+        "contact": "https://github.com/amotrix"
+    },
+    "sample": {
+        "title": {
+            "zh": "阿莫说你好",
+            "en": "Amo say hello"
+        },
+        "description": {
+            "zh": "通过 Mixin Messenger 向自己发送一条文本消息",
+            "en": "Send me a text message through Mixin Messenger"
+        }
+    }
+}
+
+>---<
+:toml:
+[resources] # Required
+runtime = "amopy0.3" # Required
+timeout = 10         # Required, Options: 10, 30, 60
+memory = 128         # Required
+
+[profile] # Optional. Amo default profile
+title = "阿莫说你好"
+description = "向自己发送一条 Mixin Messenger 消息"
+
+[arguments] # Optional, depends on script logic
+# argument name: customized
+# argument properties: label, type, value, hint, required, options
+#   required properties: label, type, value
+#   argument type: string, number, boolean, selection, mixin_assets
+#   options format: [ ["label",value"], ... ]
+
+[arguments.what]
+label = "说什么"
+type = "string"
+value = "你好👋"
+hint = ""
+required = true
+
+
+>---<
+:python:
+from .._fake_builtin import *  # Use in development, will be ignored in production
+
+
+def main(text):
+    thisamo.mixin_messenger.send_me_text_message(text)
+    thisamo.mixin_messenger.send_me_post_message("# test post\n" + "- [x] Hello world")
+
+
+main(thisamo.args["what"])

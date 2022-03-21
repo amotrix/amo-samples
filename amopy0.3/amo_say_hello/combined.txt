@@ -14,11 +14,11 @@
 {
     "schema": "https://github.com/amotrix/schema/d202203/amo/meta-schema.json",
     "config-file": {
-        "version": "0.1.0",
+        "version": "0.1.1",
         "format": "toml"
     },
     "script-file": {
-        "version": "0.1.0"
+        "version": "0.1.1"
     },
     "author": {
         "name": "github.com/amotrix",
@@ -47,19 +47,26 @@ memory = 128         # Required
 title = "阿莫说你好"
 description = "向自己发送一条 Mixin Messenger 消息"
 
-[arguments] # Optional, depends on script logic
+# arguments
 # argument name: customized
 # argument properties: label, type, value, hint, required, options
 #   required properties: label, type, value
-#   argument type: string, number, boolean, selection, mixin_assets
-#   options format: [ ["label",value"], ... ]
+#   argument type: text, text-multiline, number, boolean, selection, mixin-assets
+#   options format: [ ["label","value"], ... ]
 
-[arguments.what]
+[constants] # Optional, static arguments
+# the value will be stored in server side
+
+[constants.what]
 label = "说什么"
-type = "string"
+type = "text"
 value = "你好👋"
 hint = ""
 required = true
+
+
+# [variables] # Optional, dynamic arguments
+# the value be provided in request. (like webapp)
 
 
 >---<
@@ -72,4 +79,4 @@ def main(text):
     thisamo.mixin_messenger.send_me_post_message("# test post\n" + "- [x] Hello world")
 
 
-main(thisamo.args["what"])
+main(thisamo.constants["what"])

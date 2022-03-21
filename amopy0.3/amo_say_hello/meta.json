@@ -1,11 +1,11 @@
 {
     "schema": "https://github.com/amotrix/schema/d202203/amo/meta-schema.json",
     "config-file": {
-        "version": "0.1.0",
+        "version": "0.1.1",
         "format": "toml"
     },
     "script-file": {
-        "version": "0.1.0"
+        "version": "0.1.1"
     },
     "author": {
         "name": "github.com/amotrix",
